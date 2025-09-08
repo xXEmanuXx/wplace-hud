@@ -1,17 +1,17 @@
 // ==UserScript==
 // @name         WPlace Hud
 // @namespace    https://github.com/xXEmanuXx/wplace-hud
-// @version      0.1.0
+// @version      0.1.1
 // @description  HUD for wplace with various information
 // @author       Ema
 // @match        https://wplace.live
 // @icon
 // @run-at       document-start
 // @grant        GM_getResourceText
-// @resource     hudHtml https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/templates/hud.html
-// @resource     hudCss https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/styles/hud.css
-// @updateURL    https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/wplace-hud.user.js
-// @downloadURL  https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/wplace-hud.user.js
+// @resource     hudHtml https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/templates/hud.html
+// @resource     hudCss https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/styles/hud.css
+// @updateURL    https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/wplace-hud.user.js
+// @downloadURL  https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/wplace-hud.user.js
 // ==/UserScript==
 
 (function initHud(){
