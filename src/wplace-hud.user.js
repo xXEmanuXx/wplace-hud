@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         WPlace Hud
 // @namespace    https://github.com/xXEmanuXx/wplace-hud
-// @version      0.1.1
+// @version      0.2.0
 // @description  HUD for wplace with various information
 // @author       Ema
-// @match        https://wplace.live
+// @match        https://wplace.live/*
 // @icon
 // @run-at       document-start
 // @grant        GM_getResourceText
@@ -14,9 +14,7 @@
 // @downloadURL  https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/wplace-hud.user.js
 // ==/UserScript==
 
-(function initHud(){
-    if (window.wplaceHud) return;
-
+function initHud() {
     const host = document.createElement('div');
     host.id = 'wplace-hud-root';
     const shadow = host.attachShadow({mode: 'open'});
@@ -30,21 +28,50 @@
     shadow.appendChild(template.content.cloneNode(true));
 
     const hud = shadow.getElementById('hud');
-    const btn = shadow.querySelector(".btn-toggle");
+    const btns = shadow.querySelectorAll(".btn");
+    const elements = {
+        name: shadow.getElementById('name'),
+        level: shadow.getElementById('level'),
+        currCharges: shadow.getElementById('currCharges'),
+        maxCharges: shadow.getElementById('maxCharges'),
+        droplets: shadow.getElementById('droplets'),
+        pixels: shadow.getElementById('pixels'),
+    };
 
     function setCollapsed(value) {
         hud.classList.toggle('is-collapsed', value)
-        btn.textContent = value ? "Show" : "Hide";
+        btns.forEach(btn => {
+            btn.textContent = value ? "Show" : "Hide";
+        });
     }
 
-    btn.addEventListener('click', () => {
+    function updateHud(data = {}) {
+        elements.name.textContent = data.name ?? '-';
+        elements.level.textContent = Math.trunc(data.level) ?? '-';
+        elements.currCharges.textContent = Math.trunc(data.charges.count) ?? '-';
+        elements.maxCharges.textContent = data.charges.max ?? '-';
+        elements.droplets.textContent = data.droplets ?? '-';
+        elements.pixels.textContent = data.pixelsPainted ?? '-';
+    }
+
+    btns.forEach(btn => btn.addEventListener('click', () => {
         setCollapsed(!hud.classList.contains('is-collapsed'));
-    });
+    }));
 
     setCollapsed(false);
 
     document.documentElement.appendChild(host);
-})();
+
+    const api = {
+        host,
+        shadow,
+        elements,
+        setCollapsed,
+        updateHud
+    };
+
+    return api;
+}
 
 async function getJson(url, { params = {}, headers = {}, timeoutMs = 8000} = {}) {
     const controller = new AbortController();
@@ -62,11 +89,23 @@ async function getJson(url, { params = {}, headers = {}, timeoutMs = 8000} = {})
             throw new Error(`HTTP ${result.status} ${result.statusText}`);
         }
 
-        return await result.json()
+        return await result.json();
     } finally {
-        clearTimeout(timeout)
+        clearTimeout(timeout);
     }
 }
 
-const url = "https://backend.wplace.live/me";
-const data = await getJson(url);
+
+(async function main() {
+    const hud = initHud();
+    const url = "https://backend.wplace.live/me";
+    var data = {};
+
+    try {
+        data = await getJson(url);
+    } catch (e) {
+        console.error('[wplace-hud] fetch /me failed:', e);
+    }
+
+    hud.updateHud(data);
+})();

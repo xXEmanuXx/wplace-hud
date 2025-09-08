@@ -1,31 +1,46 @@
 <div class="hud" id="hud">
-    <div class="title">
-        <span class="title-text">WPlace Hud</span>
-        <span class="byline">Made by Ema</span>
+    <div class="top">
+        <div class="title">
+            <span class="text">WPlace Hud</span>
+            <span class="footer">Made by Ema</span>
+        </div>
+        <button class="btn btn-toggle-top"></button>
     </div>
     <div class="content">
         <div class="row">
-            <div class="label">Level</div>
-            <div class="value">-</div>
+            <div class="label">Username:</div>
+            <div id="name" class="value"></div>
         </div>
         <div class="row">
-            <div class="label">Droplets</div>
-            <div class="value">-</div>
+            <div class="label">Level:</div>
+            <div id="level" class="value"></div>
         </div>
         <div class="row">
-            <div class="label">Pixels</div>
-            <div class="value">-</div>
+            <div class="label">Charges:</div>
+            <div id="currCharges" class="value"></div>
+            <div class="value">/</div>
+            <div id="maxCharges" class="value"></div>
+        </div>
+        <div class="sep"></div>
+        <div class="row">
+            <div class="label">Droplets:</div>
+            <div id="droplets" class="value"></div>
         </div>
         <div class="row">
-            <div class="label">Pixels to next level</div>
-            <div class="value">-</div>
+            <div class="label">Pixels:</div>
+            <div id="pixels" class="value"></div>
+        </div>
+        <div class="sep"></div>
+        <div class="row">
+            <div class="label">Pixels to next level:</div>
+            <div class="value"></div>
         </div>
         <div class="row">
-            <div class="label">Pixel to next upgrade(s)</div>
-            <div class="value">-</div>
+            <div class="label">Pixel to next upgrade(s):</div>
+            <div class="value"></div>
         </div>
     </div>
     <div class="row mt align-right">
-        <button class="btn btn-toggle"></button>
+        <button class="btn btn-toggle-bottom"></button>
     </div>
 </div>
