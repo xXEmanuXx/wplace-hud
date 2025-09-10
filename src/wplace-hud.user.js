@@ -8,8 +8,8 @@
 // @icon
 // @run-at       document-start
 // @grant        GM_getResourceText
-// @resource     hudHtml https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/templates/hud.html
-// @resource     hudCss https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/styles/hud.css
+// @resource     hudHtml https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/template/hud.html
+// @resource     hudCss https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/src/style/hud.css
 // @require      https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/lib/hud.js
 // @require      https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/lib/timer.js
 // @require      https://raw.githubusercontent.com/xXEmanuXx/wplace-hud/main/lib/utils.js
