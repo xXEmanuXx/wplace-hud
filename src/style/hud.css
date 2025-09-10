@@ -10,7 +10,7 @@
     color: #f0f3f7;
     box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
     font: 13px/1.4 Roboto, sans-serif;
-    backdrop-filter: blur(2px);
+    backdrop-filter: none;
 }
 
 .hud.is-collapsed .top {
@@ -86,8 +86,22 @@
 
 .row {
     display: flex;
-
     gap: 5px;
+}
+
+.row.subtle {
+  font-size: 10px;
+  opacity: 0.85;
+  color: #f0f3f7;;
+}
+
+.row.subtle .label {
+  font-weight: 500;
+}
+
+.timer {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
 }
 
 .value {
@@ -105,6 +119,6 @@
 }
 
 .sep {
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
